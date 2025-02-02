@@ -1,11 +1,12 @@
 from google.cloud import bigquery
 import functions_framework
 
+
 @functions_framework.cloud_event
 def load_to_bq(cloud_event):
     bucket = cloud_event.data["bucket"]
     file_name = cloud_event.data["name"]
-    
+
     client = bigquery.Client()
     dataset_id = "lego_tracking"
     table_id = "raw_events"
@@ -48,7 +49,7 @@ def load_to_bq(cloud_event):
         allow_jagged_rows=True,
         ignore_unknown_values=True,
     )
-    
+
     uri = f"gs://{bucket}/{file_name}"
     load_job = client.load_table_from_uri(uri, full_table_id, job_config=job_config)
     load_job.result()
