@@ -4,18 +4,18 @@
 This project processes and analyzes user behavior data from Snowplow Analytics. The original task requested AWS and Databricks, but I implemented a similar solution using Google Cloud Platform (GCP) services, DBT Core and GitHub Actions.
 
 ### Technology Replacements
-- AWS → Google Cloud Platform (GCP)
-- Databricks/dbt → BigQuery/dbt
-- AWS Lambda → Cloud Functions
-- AWS S3 → Google Cloud Storage
+- `AWS` → `Google Cloud Platform`
+- `Databricks/dbt` → `BigQuery`/`dbt`
+- `AWS Lambda` → `Cloud Functions`
+- `AWS S3` → `Google Cloud Storage`
 
 ## Data Products
 1. BigQuery Tables
-   - raw_events: Raw Snowplow data
-   - staging_snowplow_events: Cleaned event data
-   - dim_users: User dimensions and metrics
-   - fct_sessions: Session-level facts
-   - user_engagement: Analytics and insights
+   - `raw_events`: Raw Snowplow data
+   - `staging_snowplow_events`: Cleaned event data
+   - `dim_users`: User dimensions and metrics
+   - `fct_sessions`: Session-level facts
+   - `user_engagement`: Analytics and insights
 
 2. Connected Google Sheets
    - Snowplow data model (connected to dim_users and fct_sessions): [Google Sheet](https://docs.google.com/spreadsheets/d/1SzLXdHWpabiICFUMr4IgQg3PPa4eYQI92yaGMj3I934/edit?usp=sharing)
@@ -45,7 +45,7 @@ graph LR
 ## Setup Instructions
 
 ### 1. GCP Setup
-```shell
+```bash
 # Login to GCP
 gcloud auth login
 gcloud auth application-default login
