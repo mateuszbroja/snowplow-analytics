@@ -40,7 +40,6 @@ graph LR
     G -->|Tests| E
     end
 ```
-<img width="646" alt="image" src="https://github.com/user-attachments/assets/773a40f5-5652-4187-a206-f5b3733ce394" />
 
 ## Setup Instructions
 
@@ -106,7 +105,7 @@ chmod +x cloud_function/iam.sh
    - GCP_CREDENTIALS: Service account JSON
    - GCP_PROJECT_ID: lego-tracking-analytics
 
-[Space for GitHub Actions Screenshots]
+<img width="646" alt="image" src="https://github.com/user-attachments/assets/773a40f5-5652-4187-a206-f5b3733ce394" />
 
 ## Project Structure
 ```
