@@ -9,7 +9,7 @@ models:
         tests:
           - unique
           - not_null
-          
+
   - name: fct_sessions
     description: Session facts with aggregated metrics
     columns:

@@ -1,7 +1,7 @@
 name: DBT Run
 on:
   schedule:
-    - cron: '0 5 * * *'  # Runs at 5 AM UTC daily
+    - cron: "0 5 * * *" # Runs at 5 AM UTC daily
   workflow_dispatch:
 
 jobs:
@@ -9,20 +9,21 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      
+
       - uses: actions/setup-python@v4
         with:
-          python-version: '3.10'
-          
+          python-version: "3.10"
+          cache: "pip"
+
       - name: Setup GCP Auth
         uses: google-github-actions/auth@v1
         with:
           credentials_json: ${{ secrets.GCP_CREDENTIALS }}
-          
+
       - name: Install dependencies
         run: |
           pip install dbt-bigquery
-          
+
       - name: Setup dbt profiles
         run: |
           mkdir -p ~/.dbt
@@ -38,7 +39,7 @@ jobs:
                 threads: 2
                 location: EU
           EOF
-          
+
       - name: Run dbt
         env:
           GCP_PROJECT_ID: ${{ secrets.GCP_PROJECT_ID }}
