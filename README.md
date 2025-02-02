@@ -22,8 +22,6 @@ This project processes and analyzes user behavior data from Snowplow Analytics. 
 2. Connected Google Sheets
    - Snowplow data model (connected to dim_users and fct_sessions): [Google Sheet](https://docs.google.com/spreadsheets/d/1SzLXdHWpabiICFUMr4IgQg3PPa4eYQI92yaGMj3I934/edit?usp=sharing)
 
----
-
 ## Architecture
 ```mermaid
 graph LR
@@ -43,8 +41,6 @@ graph LR
     G -->|Tests| E
     end
 ```
-
----
 
 ## Setup Instructions
 
@@ -113,8 +109,6 @@ chmod +x cloud_function/iam.sh
 
 > <img width="646" alt="image" src="https://github.com/user-attachments/assets/773a40f5-5652-4187-a206-f5b3733ce394" />
 
----
-
 ## Project Structure
 ```
 .
@@ -160,8 +154,6 @@ Key workflow features:
 - Caches Python dependencies
 - Executes dbt models in stages
 - Reports any test failures
-
----
 
 ## Future Extensions
 1. Data Quality
