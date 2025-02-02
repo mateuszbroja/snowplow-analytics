@@ -14,28 +14,21 @@ def load_to_bq(cloud_event):
 
     schema = [
         bigquery.SchemaField("derived_tstamp", "TIMESTAMP"),
-        bigquery.SchemaField("event_name", "STRING"),
-        bigquery.SchemaField("domain_userid", "STRING"),
-        bigquery.SchemaField("domain_sessionidx", "INTEGER"),
-        bigquery.SchemaField("geo_city", "STRING"),
-        bigquery.SchemaField("app_id", "STRING"),
-        bigquery.SchemaField("page_urlpath", "STRING"),
-        bigquery.SchemaField("derived_tstamp", "TIMESTAMP"),  # duplicate column
         bigquery.SchemaField("dvce_created_tstamp", "TIMESTAMP"),
         bigquery.SchemaField("dvce_sent_tstamp", "TIMESTAMP"),
         bigquery.SchemaField("collector_tstamp", "TIMESTAMP"),
         bigquery.SchemaField("etl_tstamp", "TIMESTAMP"),
         bigquery.SchemaField("true_tstamp", "TIMESTAMP"),
         bigquery.SchemaField("user_id", "STRING"),
-        bigquery.SchemaField("domain_userid", "STRING"),  # duplicate column
+        bigquery.SchemaField("domain_userid", "STRING"),
         bigquery.SchemaField("network_userid", "STRING"),
         bigquery.SchemaField("user_ipaddress", "STRING"),
         bigquery.SchemaField("user_fingerprint", "STRING"),
         bigquery.SchemaField("domain_sessionid", "STRING"),
-        bigquery.SchemaField("domain_sessionidx", "INTEGER"),  # duplicate column
+        bigquery.SchemaField("domain_sessionidx", "INTEGER"),
         bigquery.SchemaField("event_id", "STRING"),
         bigquery.SchemaField("event", "STRING"),
-        bigquery.SchemaField("event_name", "STRING"),  # duplicate column
+        bigquery.SchemaField("event_name", "STRING"),
         bigquery.SchemaField("event_vendor", "STRING"),
         bigquery.SchemaField("event_format", "STRING"),
         bigquery.SchemaField("event_version", "STRING"),
@@ -43,7 +36,7 @@ def load_to_bq(cloud_event):
         bigquery.SchemaField("link_click_event", "STRING"),
         bigquery.SchemaField("focus_form_event", "STRING"),
         bigquery.SchemaField("change_form_event", "STRING"),
-        bigquery.SchemaField("app_id", "STRING"),  # duplicate column
+        bigquery.SchemaField("app_id", "STRING"),
         bigquery.SchemaField("platform", "STRING"),
         bigquery.SchemaField("useragent", "STRING"),
         bigquery.SchemaField("useragent_parser_context", "STRING"),
@@ -56,7 +49,7 @@ def load_to_bq(cloud_event):
         bigquery.SchemaField("geo_country", "STRING"),
         bigquery.SchemaField("geo_region", "STRING"),
         bigquery.SchemaField("geo_region_name", "STRING"),
-        bigquery.SchemaField("geo_city", "STRING"),  # duplicate column
+        bigquery.SchemaField("geo_city", "STRING"),
         bigquery.SchemaField("geo_zipcode", "STRING"),
         bigquery.SchemaField("geo_latitude", "FLOAT"),
         bigquery.SchemaField("geo_longitude", "FLOAT"),
@@ -74,7 +67,7 @@ def load_to_bq(cloud_event):
         bigquery.SchemaField("page_urlscheme", "STRING"),
         bigquery.SchemaField("page_urlport", "INTEGER"),
         bigquery.SchemaField("page_urlhost", "STRING"),
-        bigquery.SchemaField("page_urlpath", "STRING"),  # duplicate column
+        bigquery.SchemaField("page_urlpath", "STRING"),
         bigquery.SchemaField("page_urlquery", "STRING"),
         bigquery.SchemaField("page_urlfragment", "STRING"),
         bigquery.SchemaField("performance_timing_context", "STRING"),
