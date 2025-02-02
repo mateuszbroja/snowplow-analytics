@@ -83,7 +83,6 @@ dbt debug
 
 <kbd><img width="739" alt="image" src="https://github.com/user-attachments/assets/b42ef73d-aeca-4c1f-988e-0f2fb9d1a680" /></kbd>
 
----
 
 > <img width="739" alt="image" src="https://github.com/user-attachments/assets/b42ef73d-aeca-4c1f-988e-0f2fb9d1a680" />
 
