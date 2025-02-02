@@ -140,7 +140,7 @@ chmod +x cloud_function/iam.sh
 3. Analytics Layer (`models/analytics/`)
    - `user_engagement.sql`: User behavior analysis
 
-> <img width="229" alt="image" src="https://github.com/user-attachments/assets/45b93392-8c07-4863-a966-679220de720c" />
+> <img width="310" alt="image" src="https://github.com/user-attachments/assets/c0085877-c4a8-409f-9942-b1d490a57fc0" />
 
 ### GitHub Actions Workflow
 The project uses GitHub Actions for:
