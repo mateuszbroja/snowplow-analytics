@@ -27,7 +27,7 @@ jobs:
         run: |
           mkdir -p ~/.dbt
           cat > ~/.dbt/profiles.yml << EOF
-          lego_tracking:
+          lego_tracking_dbt:
             target: prod
             outputs:
               prod:
