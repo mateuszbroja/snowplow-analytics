@@ -83,6 +83,10 @@ dbt debug
 
 <img width="739" alt="image" src="https://github.com/user-attachments/assets/b42ef73d-aeca-4c1f-988e-0f2fb9d1a680" />
 
+---
+
+> <img width="739" alt="image" src="https://github.com/user-attachments/assets/b42ef73d-aeca-4c1f-988e-0f2fb9d1a680" />
+
 ### 3. Cloud Function Setup
 ```bash
 # Make scripts executable
