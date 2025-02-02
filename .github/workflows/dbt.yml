@@ -1,0 +1,33 @@
+name: DBT Run
+on:
+  schedule:
+    - cron: '0 5 * * *'  # Runs at 5 AM UTC daily
+  workflow_dispatch:
+
+jobs:
+  dbt:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      
+      - uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+          
+      - name: Setup GCP Auth
+        uses: google-github-actions/auth@v1
+        with:
+          credentials_json: ${{ secrets.GCP_CREDENTIALS }}
+          
+      - name: Install dependencies
+        run: |
+          pip install dbt-bigquery
+          
+      - name: Run dbt
+        env:
+          GCP_PROJECT_ID: ${{ secrets.GCP_PROJECT_ID }}
+        working-directory: ./dbt_lego_tracking
+        run: |
+          dbt deps
+          dbt run
+          dbt test

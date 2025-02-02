@@ -35,3 +35,7 @@ Bucket Names:
 BigQuery Dataset: lego_tracking
 
 
+GCP_CREDENTIALS
+GCP_PROJECT_ID
+
+lego-tracking-analytics

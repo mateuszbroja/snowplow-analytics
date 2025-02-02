@@ -20,3 +20,6 @@ __pycache__/
 test.py
 
 .DS_Store
+dbt-env/
+__pycache__/
+.env
