@@ -1,0 +1,8 @@
+version: 2
+
+sources:
+  - name: snowplow
+    database: lego-tracking-analytics
+    schema: lego_tracking
+    tables:
+      - name: raw_events

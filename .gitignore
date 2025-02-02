@@ -1,0 +1,22 @@
+# Markdown
+Untitled*.md
+Homepage.md
+draft.md
+logs/
+draft/
+# Obsidian
+.obsidian
+
+# GitHub
+.gitattributes
+
+# Other
+.idea
+.env
+secrets/
+__pycache__/
+
+# Files
+test.py
+
+.DS_Store
