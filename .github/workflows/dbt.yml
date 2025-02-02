@@ -23,6 +23,22 @@ jobs:
         run: |
           pip install dbt-bigquery
           
+      - name: Setup dbt profiles
+        run: |
+          mkdir -p ~/.dbt
+          cat > ~/.dbt/profiles.yml << EOF
+          lego_tracking_dbt:
+            target: prod
+            outputs:
+              prod:
+                type: bigquery
+                method: oauth
+                project: ${{ secrets.GCP_PROJECT_ID }}
+                dataset: lego_tracking
+                threads: 4
+                location: EU
+          EOF
+          
       - name: Run dbt
         env:
           GCP_PROJECT_ID: ${{ secrets.GCP_PROJECT_ID }}
