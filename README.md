@@ -40,8 +40,7 @@ graph LR
     G -->|Tests| E
     end
 ```
-
-[Space for GCP Resources Screenshots]
+<img width="646" alt="image" src="https://github.com/user-attachments/assets/773a40f5-5652-4187-a206-f5b3733ce394" />
 
 ## Setup Instructions
 
@@ -63,6 +62,9 @@ gsutil mb -l EU gs://lego-tracking-dbt-logs
 
 # Create dataset
 bq mk --dataset lego_tracking
+
+# After Cloud Function deployment - load the CSV file to the bucket
+gsutil cp snowplow_sample.csv gs://lego-tracking-raw/
 ```
 
 ### 2. DBT Setup
@@ -80,6 +82,8 @@ dbt init lego_tracking_dbt
 dbt debug
 ```
 
+<img width="739" alt="image" src="https://github.com/user-attachments/assets/b42ef73d-aeca-4c1f-988e-0f2fb9d1a680" />
+
 ### 3. Cloud Function Setup
 ```bash
 # Make scripts executable
@@ -94,6 +98,8 @@ chmod +x cloud_function/iam.sh
 # Deploy function
 ./cloud_function/deploy.sh
 ```
+
+<img width="794" alt="image" src="https://github.com/user-attachments/assets/db291e60-950b-4bed-b6ee-8c67d96a96b3" />
 
 ### 4. GitHub Actions Setup
 1. Create secrets in repository:
@@ -132,6 +138,8 @@ chmod +x cloud_function/iam.sh
 
 3. Analytics Layer (`models/analytics/`)
    - `user_engagement.sql`: User behavior analysis
+
+<img width="229" alt="image" src="https://github.com/user-attachments/assets/45b93392-8c07-4863-a966-679220de720c" />
 
 ### GitHub Actions Workflow
 The project uses GitHub Actions for:
