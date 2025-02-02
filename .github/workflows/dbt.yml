@@ -27,7 +27,7 @@ jobs:
         run: |
           mkdir -p ~/.dbt
           cat > ~/.dbt/profiles.yml << EOF
-          lego_tracking_dbt:
+          lego_tracking:
             target: prod
             outputs:
               prod:
@@ -35,7 +35,7 @@ jobs:
                 method: oauth
                 project: ${{ secrets.GCP_PROJECT_ID }}
                 dataset: lego_tracking
-                threads: 4
+                threads: 2
                 location: EU
           EOF
           
