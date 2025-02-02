@@ -46,7 +46,7 @@ graph LR
 ## Setup Instructions
 
 ### 1. GCP Setup
-```bash
+```shell
 # Login to GCP
 gcloud auth login
 gcloud auth application-default login
