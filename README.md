@@ -98,7 +98,8 @@ chmod +x cloud_function/iam.sh
 ./cloud_function/deploy.sh
 ```
 
-<img width="794" alt="image" src="https://github.com/user-attachments/assets/db291e60-950b-4bed-b6ee-8c67d96a96b3" />
+<img width="794" alt="image" src="https://github.com/user-attachments/assets/db291e60-950b-4bed-b6ee-8c67d96a96b3" style="border: 1px solid #ddd; border-radius: 4px; padding: 5px;"/>
+
 
 ### 4. GitHub Actions Setup
 1. Create secrets in repository:
