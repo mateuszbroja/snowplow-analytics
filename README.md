@@ -1,5 +1,7 @@
 # Snowplow Analytics Project
 
+---
+
 ## Project Overview
 This project processes and analyzes user behavior data from Snowplow Analytics. The original task requested AWS and Databricks, but I implemented a similar solution using Google Cloud Platform (GCP) services, DBT Core and GitHub Actions.
 
@@ -20,6 +22,7 @@ This project processes and analyzes user behavior data from Snowplow Analytics. 
 2. Connected Google Sheets
    - Snowplow data model (connected to dim_users and fct_sessions): [Google Sheet](https://docs.google.com/spreadsheets/d/1SzLXdHWpabiICFUMr4IgQg3PPa4eYQI92yaGMj3I934/edit?usp=sharing)
 
+---
 
 ## Architecture
 ```mermaid
@@ -40,6 +43,8 @@ graph LR
     G -->|Tests| E
     end
 ```
+
+---
 
 ## Setup Instructions
 
@@ -81,9 +86,6 @@ dbt init lego_tracking_dbt
 dbt debug
 ```
 
-<kbd><img width="739" alt="image" src="https://github.com/user-attachments/assets/b42ef73d-aeca-4c1f-988e-0f2fb9d1a680" /></kbd>
-
-
 > <img width="739" alt="image" src="https://github.com/user-attachments/assets/b42ef73d-aeca-4c1f-988e-0f2fb9d1a680" />
 
 ### 3. Cloud Function Setup
@@ -101,7 +103,7 @@ chmod +x cloud_function/iam.sh
 ./cloud_function/deploy.sh
 ```
 
-<img width="794" alt="image" src="https://github.com/user-attachments/assets/db291e60-950b-4bed-b6ee-8c67d96a96b3" style="border: 1px solid #ddd; border-radius: 4px; padding: 5px;"/>
+> <img width="794" alt="image" src="https://github.com/user-attachments/assets/db291e60-950b-4bed-b6ee-8c67d96a96b3" style="border: 1px solid #ddd; border-radius: 4px; padding: 5px;"/>
 
 
 ### 4. GitHub Actions Setup
@@ -109,7 +111,9 @@ chmod +x cloud_function/iam.sh
    - GCP_CREDENTIALS: Service account JSON
    - GCP_PROJECT_ID: lego-tracking-analytics
 
-<img width="646" alt="image" src="https://github.com/user-attachments/assets/773a40f5-5652-4187-a206-f5b3733ce394" />
+> <img width="646" alt="image" src="https://github.com/user-attachments/assets/773a40f5-5652-4187-a206-f5b3733ce394" />
+
+---
 
 ## Project Structure
 ```
@@ -142,7 +146,7 @@ chmod +x cloud_function/iam.sh
 3. Analytics Layer (`models/analytics/`)
    - `user_engagement.sql`: User behavior analysis
 
-<img width="229" alt="image" src="https://github.com/user-attachments/assets/45b93392-8c07-4863-a966-679220de720c" />
+> <img width="229" alt="image" src="https://github.com/user-attachments/assets/45b93392-8c07-4863-a966-679220de720c" />
 
 ### GitHub Actions Workflow
 The project uses GitHub Actions for:
@@ -156,6 +160,8 @@ Key workflow features:
 - Caches Python dependencies
 - Executes dbt models in stages
 - Reports any test failures
+
+---
 
 ## Future Extensions
 1. Data Quality
