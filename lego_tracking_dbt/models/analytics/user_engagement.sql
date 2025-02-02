@@ -1,11 +1,12 @@
-SELECT
-    date_trunc(s.session_start, day) as date,
-    count(distinct s.session_id) as total_sessions,
-    count(distinct s.user_id) as unique_users,
-    avg(s.events_count) as avg_events_per_session,
+select
+    date(u.first_seen_at) as cohort_date,
+    count(distinct u.domain_user_id) as users,
     sum(s.events_count) as total_events,
-    sum(s.unique_pages_viewed) as total_pages_viewed,
-    avg(timestamp_diff(s.session_end, s.session_start, minute)) as avg_session_duration_minutes
-FROM {{ ref('fct_sessions') }} s
-GROUP BY 1
-ORDER BY 1 DESC
+    avg(s.events_count) as avg_events_per_session,
+    avg(s.unique_pages_viewed) as avg_pages_per_session,
+    count(distinct s.session_id) as total_sessions,
+    sum(timestamp_diff(s.session_end_at, s.session_start_at, minute))/count(distinct s.session_id) as avg_session_minutes
+from {{ ref('dim_users') }} u
+left join {{ ref('fct_sessions') }} s on u.domain_user_id = s.domain_user_id
+group by 1
+order by 1 desc

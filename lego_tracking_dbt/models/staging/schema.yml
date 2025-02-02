@@ -1,0 +1,48 @@
+version: 2
+
+models:
+ - name: stg_snowplow_events
+   columns:
+     - name: event_id
+       tests:
+         - unique
+         - not_null
+     - name: event_timestamp 
+       tests:
+         - not_null
+     - name: domain_user_id 
+       tests:
+         - not_null
+     - name: session_id
+       tests:
+         - not_null
+     - name: event_name
+       tests:
+         - not_null
+     - name: device_created_at
+     - name: collected_at
+     - name: user_id
+     - name: session_index
+     - name: event_vendor
+     - name: event_version
+     - name: page_url
+     - name: page_title
+     - name: page_path
+     - name: page_host
+     - name: geo_country
+     - name: geo_region
+     - name: geo_city
+     - name: geo_timezone
+     - name: geo_latitude
+     - name: geo_longitude
+     - name: marketing_medium
+     - name: marketing_source
+     - name: marketing_campaign
+     - name: platform
+     - name: browser_language
+     - name: user_agent
+     - name: browser_viewport_width
+     - name: browser_viewport_height
+     - name: page_referrer
+     - name: referrer_medium
+     - name: referrer_source
