@@ -3,7 +3,7 @@
 ---
 
 ## Project Overview
-This project processes and analyzes user behavior data from Snowplow Analytics. The original task requested AWS and Databricks, but I implemented a similar solution using Google Cloud Platform (GCP) services, DBT Core and GitHub Actions.
+This project processes and analyzes user behavior data from Snowplow Analytics. The original task requested AWS and Databricks, but because I didn't want to register accounts on AWS and Databricks and already had one in GCP, I implemented a similar solution using Google Cloud Platform (GCP) services, dbt Core and GitHub Actions.
 
 ### Technology Replacements
 - `AWS` → `Google Cloud Platform`
