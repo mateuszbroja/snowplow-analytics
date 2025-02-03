@@ -49,6 +49,7 @@ graph LR
 ### Snowplow
 
 *(not a part of the project)*
+
 Generates raw behavioral data (clicks, page views, custom events) in JSON format and regularly uploads it to Google Cloud Storage.
 
 ### Cloud Storage
