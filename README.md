@@ -48,17 +48,15 @@ graph LR
 
 ### Architecture Components
 
-#### Snowplow
-
-*(not a part of the project)*
+#### 1. Snowplow *(not a part of the project)*
 
 Generates raw behavioral data (clicks, page views, custom events) in JSON format and regularly uploads it to Google Cloud Storage.
 
-#### Cloud Storage
+#### 2. Cloud Storage
 
 Acts as a landing zone for raw data files. New file arrivals automatically trigger the next processing step.
 
-#### Cloud Functions
+#### 3. Cloud Functions
 
 Automatically processes new data files from buckets and loads them into BigQuery tables. It also creates a dataset and table if needed.
 
