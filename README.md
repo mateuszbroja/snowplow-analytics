@@ -3,15 +3,18 @@
 ---
 
 ## Project Overview
+
 This project processes and analyzes user behavior data from Snowplow Analytics. The original task requested AWS and Databricks, but because I didn't want to register accounts on AWS and Databricks and already had one in GCP, I implemented a similar solution using Google Cloud Platform (GCP) services, dbt Core and GitHub Actions.
 
 ### Technology Replacements
+
 - `AWS` → `Google Cloud Platform`
 - `Databricks/dbt` → `BigQuery`/`dbt`
 - `AWS Lambda` → `Cloud Functions`
 - `AWS S3` → `Google Cloud Storage`
 
 ## Data Products
+
 1. **BigQuery Tables**
    - `raw_events`: Raw Snowplow data
    - `staging_snowplow_events`: Cleaned event data
@@ -43,34 +46,44 @@ graph LR
     end
 ```
 
-### 1. Snowplow Analytics (not a part of the pipeline)
-Collects raw behavioral data like clicks, page views and custom events in JSON format. It dumps the data frequently into Google Cloud Storage.
+### 1. Snowplow Analytics (not a part of the project)
+
+Generates raw behavioral data (clicks, page views, custom events) in JSON format and regularly uploads it to Google Cloud Storage.
 
 ### 2. Cloud Storage
-Serves as the initial data lake where raw files land and trigger further processing.
+
+Acts as a landing zone for raw data files. New file arrivals automatically trigger the next processing step.
 
 ### 3. Cloud Functions
+
 Automatically processes new data files from buckets and loads them into BigQuery tables. It also creates a dataset and table if needed.
 
 ### 4. BigQuery
-Data warehouse. Multiple datasets store unprocessed data that feeds into dbt transformations and then already processedd one.
+
+Data warehouse hosting both raw and processed datasets. Raw data tables feed into dbt transformations, which output processed analytical tables.
 
 ### 5. DBT
-Processes data in three stages:
+
+Handles data transformations in three stages:
+
 - Staging: Data cleaning
 - Marts: Business logic
 - Analytics: Final metrics
-Also consists of set of tests to ensuer data quality.
+
+Includes data quality tests throughout the pipeline.
 
 ### 6. Google Sheets
+
 Displays processed data for reporting and visualization.
 
 ### 7. GitHub Actions
-- Runs dbt tests and transformations daily at 5 AM UTC
+
+Automates dbt tests and transformations with daily runs at 5 AM UTC.
 
 ## Setup Instructions
 
 ### 1. GCP Setup
+
 ```bash
 # Login to GCP
 gcloud auth login
@@ -94,6 +107,7 @@ gsutil cp snowplow_sample.csv gs://lego-tracking-raw/
 ```
 
 ### 2. DBT Setup
+
 ```bash
 # Install DBT
 pip install dbt-bigquery
@@ -111,6 +125,7 @@ dbt debug
 > <img width="739" alt="image" src="https://github.com/user-attachments/assets/b42ef73d-aeca-4c1f-988e-0f2fb9d1a680" />
 
 ### 3. Cloud Function Setup
+
 ```bash
 # Make scripts executable
 chmod +x cloud_function/deploy.sh
@@ -127,8 +142,8 @@ chmod +x cloud_function/iam.sh
 
 > <img width="794" alt="image" src="https://github.com/user-attachments/assets/db291e60-950b-4bed-b6ee-8c67d96a96b3" style="border: 1px solid #ddd; border-radius: 4px; padding: 5px;"/>
 
-
 ### 4. GitHub Actions Setup
+
 1. Create secrets in repository:
    - `GCP_CREDENTIALS`: `Service account JSON`
    - `GCP_PROJECT_ID`: `lego-tracking-analytics`
@@ -136,6 +151,7 @@ chmod +x cloud_function/iam.sh
 > <img width="646" alt="image" src="https://github.com/user-attachments/assets/773a40f5-5652-4187-a206-f5b3733ce394" />
 
 ## Project Structure
+
 ```
 .
 ├── README.md
@@ -148,6 +164,7 @@ chmod +x cloud_function/iam.sh
 ```
 
 ### Cloud Function Files
+
 - `main.py`: Loads data from Cloud Storage to BigQuery
 - `requirements.txt`: Python dependencies
 - `deploy.sh`: Deployment script
@@ -155,6 +172,7 @@ chmod +x cloud_function/iam.sh
 - `iam.sh`: Sets up permissions
 
 ### DBT Models
+
 1. Staging Layer (`models/staging/`)
    - `stg_snowplow_events.sql`: Cleans raw events data
    - `schema.yml`: Column definitions and tests
@@ -169,6 +187,7 @@ chmod +x cloud_function/iam.sh
 > <img width="310" alt="image" src="https://github.com/user-attachments/assets/c0085877-c4a8-409f-9942-b1d490a57fc0" />
 
 ## Future Extensions
+
 1. Data Quality
    - Add more data quality tests
    - Implement data freshness checks
