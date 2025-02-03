@@ -46,8 +46,6 @@ graph LR
     end
 ```
 
-### Architecture Components
-
 ### Snowplow
 
 *(not a part of the project)*
