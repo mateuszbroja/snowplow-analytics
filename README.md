@@ -84,6 +84,8 @@ Displays processed data for reporting and visualization.
 
 Automates dbt tests and transformations with daily runs at 5 AM UTC.
 
+---
+
 ## Setup Instructions
 
 ### 1. GCP Setup
