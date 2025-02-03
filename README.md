@@ -46,23 +46,24 @@ graph LR
     end
 ```
 
-### 1. Snowplow Analytics (not a part of the project)
+### Snowplow
 
+*(not a part of the project)*
 Generates raw behavioral data (clicks, page views, custom events) in JSON format and regularly uploads it to Google Cloud Storage.
 
-### 2. Cloud Storage
+### Cloud Storage
 
 Acts as a landing zone for raw data files. New file arrivals automatically trigger the next processing step.
 
-### 3. Cloud Functions
+### Cloud Functions
 
 Automatically processes new data files from buckets and loads them into BigQuery tables. It also creates a dataset and table if needed.
 
-### 4. BigQuery
+### BigQuery
 
 Data warehouse hosting both raw and processed datasets. Raw data tables feed into dbt transformations, which output processed analytical tables.
 
-### 5. DBT
+### DBT
 
 Handles data transformations in three stages:
 
@@ -72,11 +73,11 @@ Handles data transformations in three stages:
 
 Includes data quality tests throughout the pipeline.
 
-### 6. Google Sheets
+### Google Sheets
 
 Displays processed data for reporting and visualization.
 
-### 7. GitHub Actions
+### GitHub Actions
 
 Automates dbt tests and transformations with daily runs at 5 AM UTC.
 
