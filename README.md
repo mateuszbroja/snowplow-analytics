@@ -12,17 +12,18 @@ This project processes and analyzes user behavior data from Snowplow Analytics. 
 - `AWS S3` → `Google Cloud Storage`
 
 ## Data Products
-1. BigQuery Tables
+1. **BigQuery Tables**
    - `raw_events`: Raw Snowplow data
    - `staging_snowplow_events`: Cleaned event data
    - `dim_users`: User dimensions and metrics
    - `fct_sessions`: Session-level facts
    - `user_engagement`: Analytics and insights
 
-2. Connected Google Sheets
-   - Snowplow data model (connected to dim_users and fct_sessions): [Google Sheet](https://docs.google.com/spreadsheets/d/1SzLXdHWpabiICFUMr4IgQg3PPa4eYQI92yaGMj3I934/edit?usp=sharing)
+2. **Connected Google Sheets**
+   - Mart Tables Spreadsheets (connected to `dim_users` and `fct_sessions`): [Google Sheet](https://docs.google.com/spreadsheets/d/1SzLXdHWpabiICFUMr4IgQg3PPa4eYQI92yaGMj3I934/edit?usp=sharing)
 
 ## Architecture
+
 ```mermaid
 graph LR
     A[Snowplow Data] -->|Upload| B[Cloud Storage]
@@ -41,6 +42,31 @@ graph LR
     G -->|Tests| E
     end
 ```
+
+### 1. Snowplow Analytics (not a part of the pipeline)
+Collects raw behavioral data like clicks, page views and custom events in JSON format. It dumps the data frequently into Google Cloud Storage.
+
+### 2. Cloud Storage
+Serves as the initial data lake where raw files land and trigger further processing.
+
+### 3. Cloud Functions
+Automatically processes new data files from buckets and loads them into BigQuery tables. It also creates a dataset and table if needed.
+
+### 4. BigQuery
+Data warehouse. Multiple datasets store unprocessed data that feeds into dbt transformations and then already processedd one.
+
+### 5. DBT
+Processes data in three stages:
+- Staging: Data cleaning
+- Marts: Business logic
+- Analytics: Final metrics
+Also consists of set of tests to ensuer data quality.
+
+### 6. Google Sheets
+Displays processed data for reporting and visualization.
+
+### 7. GitHub Actions
+- Runs dbt tests and transformations daily at 5 AM UTC
 
 ## Setup Instructions
 
@@ -104,8 +130,8 @@ chmod +x cloud_function/iam.sh
 
 ### 4. GitHub Actions Setup
 1. Create secrets in repository:
-   - GCP_CREDENTIALS: Service account JSON
-   - GCP_PROJECT_ID: lego-tracking-analytics
+   - `GCP_CREDENTIALS`: `Service account JSON`
+   - `GCP_PROJECT_ID`: `lego-tracking-analytics`
 
 > <img width="646" alt="image" src="https://github.com/user-attachments/assets/773a40f5-5652-4187-a206-f5b3733ce394" />
 
@@ -141,19 +167,6 @@ chmod +x cloud_function/iam.sh
    - `user_engagement.sql`: User behavior analysis
 
 > <img width="310" alt="image" src="https://github.com/user-attachments/assets/c0085877-c4a8-409f-9942-b1d490a57fc0" />
-
-### GitHub Actions Workflow
-The project uses GitHub Actions for:
-- Automated daily data transformations
-- Running dbt tests
-- CI/CD pipeline
-
-Key workflow features:
-- Runs daily at 5 AM UTC
-- Uses service account authentication
-- Caches Python dependencies
-- Executes dbt models in stages
-- Reports any test failures
 
 ## Future Extensions
 1. Data Quality
