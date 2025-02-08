@@ -1,7 +1,7 @@
-name: "lego_tracking_dbt"
+name: "dbt_snowplow_analytics"
 version: "1.0.0"
 
-profile: "lego_tracking_dbt"
+profile: "dbt_snowplow_analytics"
 
 model-paths: ["models"]
 analysis-paths: ["analyses"]
@@ -15,7 +15,7 @@ clean-targets:
   - "dbt_packages"
 
 models:
-  lego_tracking_dbt:
+  dbt_snowplow_analytics:
     staging:
       +materialized: view
       +schema: staging

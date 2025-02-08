@@ -120,7 +120,7 @@ pip install dbt-bigquery
 dbt --version
 
 # Initialize project
-dbt init lego_tracking_dbt
+dbt init dbt_snowplow_analytics
 
 # Test connection
 dbt debug
@@ -163,7 +163,7 @@ chmod +x cloud_function/iam.sh
 │   └── workflows/          # GitHub Actions Workflows
 │       └── dbt.yml         # DBT pipeline configuration
 ├── cloud_function/         # Cloud Function code
-├── lego_tracking_dbt/      # DBT project
+├── dbt_snowplow_analytics/      # DBT project
 └── sample_data/            # Test data
 ```
 
